@@ -1,3 +1,4 @@
+# _*_ coding:utf-8 _*_
 import copy
 import functools
 import datetime
@@ -390,8 +391,8 @@ class CommAdminView(BaseAdminView):
         for menu in nav_menu.values():
             menu['menus'].sort(key=sortkeypicker(['order', 'title']))
 
-        nav_menu = list(nav_menu.values())
-        nav_menu.sort(key=lambda x: x['title'])
+        nav_menu = list(nav_menu.values())  # 菜单项列表
+        #nav_menu.sort(key=lambda x: x['title'])  # 对菜单进行排序
 
         site_menu.extend(nav_menu)
 
