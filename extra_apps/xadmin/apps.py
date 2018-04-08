@@ -1,7 +1,7 @@
 from django.apps import AppConfig
+from django.core import checks
 from django.utils.translation import ugettext_lazy as _
-
-from extra_apps import xadmin
+import xadmin
 
 
 class XAdminConfig(AppConfig):
@@ -12,4 +12,4 @@ class XAdminConfig(AppConfig):
 
     def ready(self):
         self.module.autodiscover()
-        setattr(xadmin, 'site', xadmin.site)
+        setattr(xadmin,'site',xadmin.site)

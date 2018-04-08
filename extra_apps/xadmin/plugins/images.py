@@ -1,10 +1,9 @@
-from django import forms
 from django.db import models
-from django.utils.safestring import mark_safe
+from django import forms
 from django.utils.translation import ugettext as _
+from django.utils.safestring import mark_safe
+from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView, DetailAdminView, ListAdminView
-
-from extra_apps.xadmin.sites import site
 
 
 def get_gallery_modal():

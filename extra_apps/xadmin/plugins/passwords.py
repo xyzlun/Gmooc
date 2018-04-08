@@ -4,10 +4,10 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import password_reset_confirm
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
-from xadmin.sites import site
-from xadmin.views.website import LoginView
 
-from extra_apps.xadmin.views.base import BaseAdminPlugin, BaseAdminView, csrf_protect_m
+from xadmin.sites import site
+from xadmin.views.base import BaseAdminPlugin, BaseAdminView, csrf_protect_m
+from xadmin.views.website import LoginView
 
 
 class ResetPasswordSendView(BaseAdminView):

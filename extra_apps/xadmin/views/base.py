@@ -1,8 +1,7 @@
 import copy
+import functools
 import datetime
 import decimal
-import functools
-from collections import OrderedDict
 from functools import update_wrapper
 from inspect import getargspec
 
@@ -19,7 +18,7 @@ from django.template import Context, Template
 from django.template.response import TemplateResponse
 from django.utils import six
 from django.utils.decorators import method_decorator, classonlymethod
-from django.utils.encoding import force_text, smart_text
+from django.utils.encoding import force_text, smart_text, smart_str
 from django.utils.functional import Promise
 from django.utils.http import urlencode
 from django.utils.itercompat import is_iterable
@@ -28,9 +27,10 @@ from django.utils.text import capfirst
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import View
-from xadmin.models import Log
+from collections import OrderedDict
+from xadmin.util import static, json, vendor, sortkeypicker
 
-from extra_apps.xadmin.util import static, json, vendor, sortkeypicker
+from xadmin.models import Log
 
 csrf_protect_m = method_decorator(csrf_protect)
 

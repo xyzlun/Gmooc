@@ -3,7 +3,7 @@ from django.template import Library
 from django.utils import six
 from django.utils.safestring import mark_safe
 
-from extra_apps.xadmin.util import static, vendor as util_vendor
+from xadmin.util import static, vendor as util_vendor
 
 register = Library()
 

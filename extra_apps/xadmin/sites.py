@@ -1,14 +1,13 @@
-import inspect
 import sys
 from functools import update_wrapper
-
+from future.utils import iteritems
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.base import ModelBase
-from django.template.engine import Engine
 from django.utils import six
 from django.views.decorators.cache import never_cache
-from future.utils import iteritems
+from django.template.engine import Engine
+import inspect
 
 if six.PY2 and sys.getdefaultencoding() == 'ascii':
     import imp
@@ -71,7 +70,7 @@ class AdminSite(object):
         self._registry_plugins = data['plugins']
 
     def register_modelview(self, path, admin_view_class, name):
-        from extra_apps.xadmin.views.base import BaseAdminView
+        from xadmin.views.base import BaseAdminView
         if issubclass(admin_view_class, BaseAdminView):
             self._registry_modelviews.append((path, admin_view_class, name))
         else:
@@ -82,7 +81,7 @@ class AdminSite(object):
         self._registry_views.append((path, admin_view_class, name))
 
     def register_plugin(self, plugin_class, admin_view_class):
-        from extra_apps.xadmin.views.base import BaseAdminPlugin
+        from xadmin.views.base import BaseAdminPlugin
         if issubclass(plugin_class, BaseAdminPlugin):
             self._registry_plugins.setdefault(
                 admin_view_class, []).append(plugin_class)
@@ -94,7 +93,7 @@ class AdminSite(object):
         self._registry_settings[name.lower()] = admin_class
 
     def register(self, model_or_iterable, admin_class=object, **options):
-        from extra_apps.xadmin.views.base import BaseAdminView
+        from xadmin.views.base import BaseAdminView
         if isinstance(model_or_iterable, ModelBase) or issubclass(model_or_iterable, BaseAdminView):
             model_or_iterable = [model_or_iterable]
         for model in model_or_iterable:
@@ -137,7 +136,7 @@ class AdminSite(object):
 
         If a model isn't already registered, this will raise NotRegistered.
         """
-        from extra_apps.xadmin.views.base import BaseAdminView
+        from xadmin.views.base import BaseAdminView
         if isinstance(model_or_iterable, (ModelBase, BaseAdminView)):
             model_or_iterable = [model_or_iterable]
         for model in model_or_iterable:
@@ -245,7 +244,7 @@ class AdminSite(object):
         return merge_class
 
     def get_plugins(self, admin_view_class, *option_classes):
-        from extra_apps.xadmin import BaseAdminView
+        from xadmin.views import BaseAdminView
         plugins = []
         opts = [oc for oc in option_classes if oc]
         for klass in admin_view_class.mro():
@@ -291,7 +290,7 @@ class AdminSite(object):
 
     def get_urls(self):
         from django.conf.urls import url, include
-        from extra_apps.xadmin.views.base import BaseAdminView
+        from xadmin.views.base import BaseAdminView
 
         if settings.DEBUG:
             self.check_dependencies()

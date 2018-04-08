@@ -1,4 +1,3 @@
-from django.contrib.admin.utils import get_deleted_objects
 from django.core.exceptions import PermissionDenied
 from django.db import transaction, router
 from django.http import Http404, HttpResponseRedirect
@@ -7,7 +6,11 @@ from django.utils import six
 from django.utils.encoding import force_text
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
+from django.contrib.admin.utils import get_deleted_objects
+
 from xadmin.util import unquote
+from xadmin.views.edit import UpdateAdminView
+from xadmin.views.detail import DetailAdminView
 from xadmin.views.base import ModelAdminView, filter_hook, csrf_protect_m
 
 

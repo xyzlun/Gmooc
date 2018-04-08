@@ -1,6 +1,3 @@
-from contextlib import contextmanager
-from functools import partial
-
 from crispy_forms.utils import TEMPLATE_PACK
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
@@ -16,18 +13,19 @@ from django.utils.encoding import force_text, smart_text
 from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
 from django.utils.translation import ugettext as _
-from reversion.models import Revision, Version
-from reversion.revisions import register, is_registered, create_revision, set_user
 from xadmin.layout import Field, render_field
+from xadmin.plugins.inline import Inline
+from xadmin.plugins.actions import BaseActionView
 from xadmin.plugins.inline import InlineModelAdmin
 from xadmin.sites import site
-from xadmin.util import unquote, quote, is_related_field2
-from xadmin.views import BaseAdminPlugin, ModelAdminView, CreateAdminView, UpdateAdminView, DetailAdminView, \
-    ModelFormAdminView, DeleteAdminView, ListAdminView
+from xadmin.util import unquote, quote, model_format_dict, is_related_field2
+from xadmin.views import BaseAdminPlugin, ModelAdminView, CreateAdminView, UpdateAdminView, DetailAdminView, ModelFormAdminView, DeleteAdminView, ListAdminView
 from xadmin.views.base import csrf_protect_m, filter_hook
 from xadmin.views.detail import DetailAdminUtil
-
-from extra_apps.xadmin.plugins.actions import BaseActionView
+from reversion.models import Revision, Version
+from reversion.revisions import is_active, register, is_registered, set_comment, create_revision, set_user
+from contextlib import contextmanager
+from functools import partial
 
 
 def _autoregister(admin, model, follow=None):

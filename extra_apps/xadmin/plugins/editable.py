@@ -7,15 +7,14 @@ from django.utils.encoding import force_text, smart_text
 from django.utils.html import escape, conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
-from xadmin.layout import FormHelper
 from xadmin.plugins.ajax import JsonErrorDict
 from xadmin.sites import site
 from xadmin.util import lookup_field, display_for_field, label_for_field, unquote, boolean_icon
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView, ListAdminView
 from xadmin.views.base import csrf_protect_m, filter_hook
+from xadmin.views.edit import ModelFormAdminUtil
 from xadmin.views.list import EMPTY_CHANGELIST_VALUE
-
-from extra_apps.xadmin.views.edit import ModelFormAdminUtil
+from xadmin.layout import FormHelper
 
 
 class EditablePlugin(BaseAdminPlugin):

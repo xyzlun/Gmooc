@@ -1,9 +1,8 @@
 
 import copy
-
 from django import forms
-from django.core.exceptions import PermissionDenied
 from django.db import models
+from django.core.exceptions import PermissionDenied
 from django.forms.models import modelform_factory
 from django.template.response import TemplateResponse
 from django.utils.encoding import force_text
@@ -13,8 +12,7 @@ from xadmin.layout import FormHelper, Layout, Fieldset, Container, Col
 from xadmin.plugins.actions import BaseActionView, ACTION_CHECKBOX_NAME
 from xadmin.util import model_ngettext, vendor
 from xadmin.views.base import filter_hook
-
-from extra_apps.xadmin.views.edit import ModelFormAdminView
+from xadmin.views.edit import ModelFormAdminView
 
 BATCH_CHECKBOX_NAME = '_batch_change_fields'
 

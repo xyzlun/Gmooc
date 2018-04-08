@@ -1,7 +1,6 @@
 
+from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, CommAdminView
-
-from extra_apps.xadmin.sites import site
 
 BUILDIN_STYLES = {
     'default': 'xadmin/includes/sitemenu_default.html',

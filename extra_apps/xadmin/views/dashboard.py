@@ -1,31 +1,30 @@
-import copy
-
 from django import forms
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, NoReverseMatch
+from django.template.context_processors import csrf
 from django.db.models.base import ModelBase
 from django.forms.forms import DeclarativeFieldsMetaclass
 from django.forms.utils import flatatt
-from django.http import Http404
 from django.template import loader
-from django.template.context_processors import csrf
+from django.http import Http404
 from django.test.client import RequestFactory
 from django.utils.encoding import force_text, smart_text
 from django.utils.html import escape
-from django.utils.http import urlencode, urlquote
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
+from django.utils.http import urlencode, urlquote
 from django.views.decorators.cache import never_cache
 from xadmin import widgets as exwidgets
 from xadmin.layout import FormHelper
 from xadmin.models import UserSettings, UserWidget
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
-from xadmin.util import unquote, DJANGO_11
 from xadmin.views.base import CommAdminView, ModelAdminView, filter_hook, csrf_protect_m
+from xadmin.views.edit import CreateAdminView
 from xadmin.views.list import ListAdminView
-
-from extra_apps.xadmin.views.edit import CreateAdminView
+from xadmin.util import unquote, DJANGO_11
+import copy
 
 
 class WidgetTypeSelect(forms.Widget):

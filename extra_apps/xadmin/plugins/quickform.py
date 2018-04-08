@@ -1,15 +1,13 @@
-import copy
-
-from django import forms
 from django.db import models
-from django.forms.models import modelform_factory
+from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
+from django.forms.models import modelform_factory
+import copy
 from xadmin.sites import site
 from xadmin.util import get_model_from_relation, vendor
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView
-
-from extra_apps.xadmin.layout import Layout
+from xadmin.layout import Layout
 
 
 class QuickFormPlugin(BaseAdminPlugin):

@@ -1,21 +1,20 @@
 import copy
 import inspect
-
-from crispy_forms.utils import TEMPLATE_PACK
 from django import forms
-from django.contrib.auth import get_permission_codename
-from django.contrib.contenttypes.forms import BaseGenericInlineFormSet, generic_inlineformset_factory
 from django.forms.formsets import all_valid, DELETION_FIELD_NAME
-from django.forms.models import inlineformset_factory, BaseInlineFormSet
+from django.forms.models import inlineformset_factory, BaseInlineFormSet, modelform_defines_fields
+from django.contrib.contenttypes.forms import BaseGenericInlineFormSet, generic_inlineformset_factory
 from django.template import loader
 from django.template.loader import render_to_string
+from django.contrib.auth import get_permission_codename
 from django.utils import six
 from django.utils.encoding import smart_text
+from crispy_forms.utils import TEMPLATE_PACK
+
 from xadmin.layout import FormHelper, Layout, flatatt, Container, Column, Field, Fieldset
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView, DetailAdminView, filter_hook
-
-from extra_apps.xadmin.plugins.utils import get_context_dict
 
 
 class ShowField(Field):

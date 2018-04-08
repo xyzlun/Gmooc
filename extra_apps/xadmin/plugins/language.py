@@ -2,10 +2,9 @@
 from django.conf import settings
 from django.template import loader
 from django.views.i18n import set_language
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
 from xadmin.views import BaseAdminPlugin, CommAdminView, BaseAdminView
-
-from extra_apps.xadmin.plugins.utils import get_context_dict
 
 
 class SetLangNavPlugin(BaseAdminPlugin):

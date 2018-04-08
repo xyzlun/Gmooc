@@ -10,15 +10,16 @@ from django.utils.decorators import method_decorator
 from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
+
 from xadmin.filters import FILTER_PREFIX, SEARCH_VAR
-from xadmin.models import Bookmark
 from xadmin.plugins.relate import RELATE_PREFIX
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
 from xadmin.views import ModelAdminView, BaseAdminPlugin, ListAdminView
-from xadmin.views.dashboard import widget_manager, BaseWidget, PartialBaseWidget
 from xadmin.views.list import COL_LIST_VAR, ORDER_VAR
+from xadmin.views.dashboard import widget_manager, BaseWidget, PartialBaseWidget
 
-from extra_apps.xadmin.plugins.utils import get_context_dict
+from xadmin.models import Bookmark
 
 csrf_protect_m = method_decorator(csrf_protect)
 

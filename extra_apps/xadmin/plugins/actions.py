@@ -1,7 +1,5 @@
 from collections import OrderedDict
-
 from django import forms
-from django.contrib.admin.utils import get_deleted_objects
 from django.core.exceptions import PermissionDenied
 from django.db import router
 from django.http import HttpResponse, HttpResponseRedirect
@@ -10,14 +8,17 @@ from django.template.response import TemplateResponse
 from django.utils import six
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
-from django.utils.text import capfirst
 from django.utils.translation import ugettext as _, ungettext
+from django.utils.text import capfirst
+
+from django.contrib.admin.utils import get_deleted_objects
+
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
 from xadmin.util import model_format_dict, model_ngettext
 from xadmin.views import BaseAdminPlugin, ListAdminView
 from xadmin.views.base import filter_hook, ModelAdminView
 
-from extra_apps.xadmin.plugins.utils import get_context_dict
 
 ACTION_CHECKBOX_NAME = '_selected_action'
 checkbox = forms.CheckboxInput({'class': 'action-select'}, lambda value: False)

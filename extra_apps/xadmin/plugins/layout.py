@@ -1,11 +1,11 @@
 # coding=utf-8
 from django.template import loader
 from django.utils.translation import ugettext_lazy as _
-from xadmin.sites import site
-from xadmin.util import label_for_field
-from xadmin.views import BaseAdminPlugin, ListAdminView
 
-from extra_apps.xadmin.plugins.utils import get_context_dict
+from xadmin.plugins.utils import get_context_dict
+from xadmin.sites import site
+from xadmin.views import BaseAdminPlugin, ListAdminView
+from xadmin.util import label_for_field
 
 LAYOUT_VAR = '_layout'
 

@@ -1,9 +1,8 @@
 #coding:utf-8
-from xadmin.models import UserSettings
 from xadmin.sites import site
+from xadmin.models import UserSettings
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView, DetailAdminView
-
-from extra_apps.xadmin.layout import Fieldset, Column
+from xadmin.layout import Fieldset, Column
 
 
 class BasePortalPlugin(BaseAdminPlugin):

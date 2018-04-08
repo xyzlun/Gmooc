@@ -9,9 +9,8 @@ from django.template import loader
 from django.utils.encoding import force_text
 from django.utils.html import escape, conditional_escape
 from django.utils.safestring import mark_safe
+from xadmin.util import vendor, DJANGO_11
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView
-
-from extra_apps.xadmin.util import vendor, DJANGO_11
 
 
 class SelectMultipleTransfer(forms.SelectMultiple):

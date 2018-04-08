@@ -1,17 +1,16 @@
 from __future__ import absolute_import
-
+from django.utils.translation import ugettext as _
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.views.decorators.cache import never_cache
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
 from django.http import HttpResponse
-from django.utils.translation import ugettext as _
-from django.views.decorators.cache import never_cache
-from xadmin.forms import AdminAuthenticationForm
-from xadmin.models import UserSettings
 
-from extra_apps.xadmin.layout import FormHelper
 from .base import BaseAdminView, filter_hook
 from .dashboard import Dashboard
+from xadmin.forms import AdminAuthenticationForm
+from xadmin.models import UserSettings
+from xadmin.layout import FormHelper
 
 
 class IndexView(Dashboard):

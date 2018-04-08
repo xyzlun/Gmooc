@@ -1,10 +1,11 @@
 from django.db.models import FieldDoesNotExist, Avg, Max, Min, Count, Sum
 from django.utils.translation import ugettext as _
-from xadmin.util import display_for_field
-from xadmin.views import BaseAdminPlugin, ListAdminView
-from xadmin.views.list import ResultRow, ResultItem
 
-from extra_apps.xadmin.sites import site
+from xadmin.sites import site
+from xadmin.views import BaseAdminPlugin, ListAdminView
+
+from xadmin.views.list import ResultRow, ResultItem
+from xadmin.util import display_for_field
 
 AGGREGATE_METHODS = {
     'min': Min, 'max': Max, 'avg': Avg, 'sum': Sum, 'count': Count

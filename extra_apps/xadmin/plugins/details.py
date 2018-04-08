@@ -1,11 +1,11 @@
 
 
+from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db import models
-from django.utils.translation import ugettext as _
-from xadmin.views import BaseAdminPlugin, ListAdminView
 
-from extra_apps.xadmin.sites import site
+from xadmin.sites import site
+from xadmin.views import BaseAdminPlugin, ListAdminView
 
 
 class DetailsPlugin(BaseAdminPlugin):

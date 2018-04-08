@@ -1,18 +1,21 @@
+import json
+import django
+from django.db import models
+from django.utils import timezone
+from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext_lazy as _, ugettext
+from django.core.urlresolvers import NoReverseMatch, reverse
+from django.core.serializers.json import DjangoJSONEncoder
+from django.db.models.base import ModelBase
+from django.utils.encoding import python_2_unicode_compatible, smart_text
+
+from django.db.models.signals import post_migrate
+from django.contrib.auth.models import Permission
+
 import datetime
 import decimal
-import json
-
-from django.conf import settings
-from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.models import ContentType
-from django.core.serializers.json import DjangoJSONEncoder
-from django.core.urlresolvers import reverse
-from django.db import models
-from django.db.models.base import ModelBase
-from django.db.models.signals import post_migrate
-from django.utils import timezone
-from django.utils.encoding import python_2_unicode_compatible, smart_text
-from django.utils.translation import ugettext_lazy as _, ugettext
+from xadmin.util import quote
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 

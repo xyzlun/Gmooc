@@ -7,15 +7,15 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
-from django.utils.encoding import force_text, smart_text
 from django.utils.http import urlencode
+from django.utils.encoding import force_text, smart_text
 from django.utils.translation import ugettext_lazy as _, ugettext
+
+from xadmin.plugins.utils import get_context_dict
 from xadmin.sites import site
-from xadmin.util import lookup_field, label_for_field, json
 from xadmin.views import BaseAdminPlugin, ListAdminView
 from xadmin.views.dashboard import ModelBaseWidget, widget_manager
-
-from extra_apps.xadmin.plugins.utils import get_context_dict
+from xadmin.util import lookup_field, label_for_field, json
 
 
 @widget_manager.register

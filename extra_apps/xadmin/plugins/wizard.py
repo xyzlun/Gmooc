@@ -1,10 +1,8 @@
 import re
 from collections import OrderedDict
-
 from django import forms
 from django.db import models
 from django.template import loader
-
 try:
     from formtools.wizard.storage import get_storage
     from formtools.wizard.forms import ManagementForm
@@ -17,11 +15,14 @@ except:
 
 from django.utils import six
 from django.utils.encoding import smart_text
+from django.utils.module_loading import import_string
 from django.forms import ValidationError
 from django.forms.models import modelform_factory
 
-from extra_apps.xadmin.sites import site
-from extra_apps.xadmin import BaseAdminPlugin, ModelFormAdminView
+from xadmin.sites import site
+from xadmin.views import BaseAdminPlugin, ModelFormAdminView
+
+from xadmin.util import DJANGO_11
 
 
 def normalize_name(name):

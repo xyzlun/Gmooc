@@ -1,20 +1,24 @@
 from __future__ import absolute_import
-
-import datetime
-import decimal
-
 import django
-from django.conf import settings
 from django.db import models
+from django.db.models.sql.query import LOOKUP_SEP
 from django.db.models.deletion import Collector
 from django.db.models.fields.related import ForeignObjectRel
-from django.db.models.sql.query import LOOKUP_SEP
-from django.forms import Media
+from django.forms.forms import pretty_name
 from django.utils import formats, six
-from django.utils.encoding import force_text, smart_text
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
-from django.utils.translation import get_language
+from django.utils.text import capfirst
+from django.utils.encoding import force_text, smart_text, smart_str
 from django.utils.translation import ungettext
+from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.forms import Media
+from django.utils.translation import get_language
+from django.contrib.admin.utils import label_for_field, help_text_for_field
+from django import VERSION as version
+import datetime
+import decimal
 
 if 'django.contrib.staticfiles' in settings.INSTALLED_APPS:
     from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -321,7 +325,7 @@ def boolean_icon(field_val):
 
 
 def display_for_field(value, field):
-    from extra_apps.xadmin import EMPTY_CHANGELIST_VALUE
+    from xadmin.views.list import EMPTY_CHANGELIST_VALUE
 
     if field.flatchoices:
         return dict(field.flatchoices).get(value, EMPTY_CHANGELIST_VALUE)
@@ -346,7 +350,7 @@ def display_for_field(value, field):
 
 
 def display_for_value(value, boolean=False):
-    from extra_apps.xadmin import EMPTY_CHANGELIST_VALUE
+    from xadmin.views.list import EMPTY_CHANGELIST_VALUE
 
     if boolean:
         return boolean_icon(value)
