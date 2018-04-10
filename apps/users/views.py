@@ -1,3 +1,4 @@
+# _*_ coding:utf-8 _*_
 from django.shortcuts import render
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.backends import ModelBackend
@@ -24,6 +25,6 @@ def user_login(request):
             login(request,user)
             return render(request,'index.html')
         else:
-            return render(request, 'login.html', {})
+            return render(request, 'login.html', {'msg':u'用户名或密码错误!'})
     elif request.method == 'GET':
         return render(request, 'login.html', {})
