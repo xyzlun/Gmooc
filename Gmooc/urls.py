@@ -1,3 +1,4 @@
+# _*_ coding:utf-8 _*_
 """Gmooc URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,14 +15,18 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.views.generic import TemplateView
 
 from extra_apps import xadmin
-from users.views import user_login
+from users.views import LoginView,RegisterView,ActiveUserView
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
-    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url('^login/$', user_login, name='login')
+    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),  # 对应在html文件中的ur
+    url('^login/$', LoginView.as_view(), name='login'),  # 对应在html文件中的ur
+    url('^register/$', RegisterView.as_view(), name='register'),  # 对应在html文件中的url
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='user_active')
 
 ]
