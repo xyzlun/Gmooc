@@ -7,7 +7,7 @@ from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 
 from .models import UserProfile,EmailVerifyRecord
-from .forms import LoginForm,RegisterForm
+from .forms import LoginForm,RegisterForm,ForgetForm
 from utils.email_send import send_register_email
 class CustomBackend(ModelBackend):  # 重载用户名密码验证方法
     def authenticate(self, username=None, password=None, **kwargs):
@@ -31,7 +31,7 @@ class LoginView(View):  # 登录页面的后台逻辑
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return render(request,'index.html')
+                    return render(request,'index.html', {'login_form': login_form})
                 else:
                     return render(request, 'login.html', {'msg': u'用户名未激活!', 'login_form': login_form})
             else:
@@ -48,6 +48,8 @@ class RegisterView(View):  # 注册页面后台逻辑
         register_form = RegisterForm(request.POST)
         if  register_form.is_valid():  # RegisterForm实例验证结果
             user_name = request.POST.get('email','')
+            if UserProfile.objects.filter(email=user_name):  # 验证用户是否存在
+                return render(request, 'register.html', {'register_form': register_form, 'msg': u'用户已存在!'})
             pass_word = request.POST.get('password','')
             user_profile = UserProfile()
             user_profile.username = user_name
@@ -70,5 +72,20 @@ class ActiveUserView(View):  # 激活用户后台逻辑
                 user = UserProfile.objects.get(email=email)  # 匹配记录中邮箱地址相同的userprofile，修改is_active值
                 user.is_active = True
                 user.save()
+        else:
+            return render(request, 'active_fail.html')
         return render(request, 'login.html')
 
+
+class ForgetPwdView(View):
+    def get(self, request):
+        forget_form = ForgetForm()
+        return render(request, 'forgetpwd.html', {'forget_form':forget_form})
+    def post(self,request):
+        forget_form = ForgetForm(request.POST)
+        if forget_form.is_valid():
+            email = request.POST.get('email', '')
+            send_register_email(email, 'forget')
+            return render(request, 'send_success.html')
+        else:
+            return render(request, 'forgetpwd.html', {'forget_form': forget_form})
