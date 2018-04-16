@@ -143,3 +143,6 @@ EMAIL_HOST_USER = 'xyzlun@163.com'
 EMAIL_HOST_PASSWORD = 'dsmaymiss1'
 EMAIL_USE_TLS = False
 EMAIL_FROM = 'xyzlun@163.com'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

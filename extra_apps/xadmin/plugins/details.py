@@ -1,4 +1,4 @@
-
+# _*_ coding:utf-8 _*_
 
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -49,7 +49,7 @@ class DetailsPlugin(BaseAdminPlugin):
                         else:
                             edit_url = ''
                         item.btns.append('<a data-res-uri="%s" data-edit-uri="%s" class="details-handler" rel="tooltip" title="%s"><i class="fa fa-info-circle"></i></a>'
-                                         % (item_res_uri, edit_url, _(u'Details of %s') % str(rel_obj)))
+                                         % (item_res_uri, edit_url, _(u'Details of %s') % unicode(rel_obj)))
                 except NoReverseMatch:
                     pass
         return item
