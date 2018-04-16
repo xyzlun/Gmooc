@@ -1,3 +1,4 @@
+# _*_ coding:utf-8 _*_
 """Gmooc URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,13 +15,25 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
-from django.contrib import admin
+from django.conf.urls import url, include
 from django.views.generic import TemplateView
+
 from extra_apps import xadmin
+from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView
+from organization.views import OrgView
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
-    url('^$', TemplateView.as_view(template_name='index.html'), name='index')
+    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),  # 对应在html文件中的ur
+    url('^login/$', LoginView.as_view(), name='login'),  # 对应在html文件中的ur
+    url('^register/$', RegisterView.as_view(), name='register'),  # 对应在html文件中的url
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='user_active'),
+    url(r'^forget/$', ForgetPwdView.as_view(), name='forget_pwd'),
+    url(r'^reset/(?P<reset_code>.*)/$', ResetView.as_view(), name='reset_pwd'),
+    url(r'^modify_pwd/$', ModifyPwdView.as_view(), name='modify_pwd'),
+
+    # 课程机构首页
+    url(r'^org_list/$', OrgView.as_view(), name='org_list'),
 
 ]
