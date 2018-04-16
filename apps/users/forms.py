@@ -18,3 +18,8 @@ class RegisterForm(forms.Form):  # 将注册时提交的表单对象化，并做
 class ForgetForm(forms.Form):  # 将注册时提交的表单对象化，并做字段配置
     email = forms.EmailField(required=True)
     captcha = CaptchaField(error_messages={'invalid':u'验证码错误'})
+
+
+class ModifyPwdForm(forms.Form):  # 将修改密码时提交的表单对象化，并做字段配置
+    password1 = forms.CharField(required=True, min_length=5)
+    password2 = forms.CharField(required=True, min_length=5)

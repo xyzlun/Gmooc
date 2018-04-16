@@ -7,7 +7,7 @@ from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 
 from .models import UserProfile,EmailVerifyRecord
-from .forms import LoginForm,RegisterForm,ForgetForm
+from .forms import LoginForm,RegisterForm,ForgetForm,ModifyPwdForm
 from utils.email_send import send_register_email
 class CustomBackend(ModelBackend):  # 重载用户名密码验证方法
     def authenticate(self, username=None, password=None, **kwargs):
@@ -89,3 +89,34 @@ class ForgetPwdView(View):
             return render(request, 'send_success.html')
         else:
             return render(request, 'forgetpwd.html', {'forget_form': forget_form})
+
+
+class ResetView(View):  # 用户重置密码获取链接后台逻辑，只有get方法
+    def  get(self, request, reset_code):
+        all_record = EmailVerifyRecord.objects.filter(code=reset_code)  # 查询激活码和获取到的active_code相同的记录
+        if all_record:  # 如果不为空
+            for record in all_record:  # 遍历记录
+                email = record.email
+                return  render(request, 'password_reset.html', {'email':email})  # 向页面传递email
+        else:
+            return render(request, 'active_fail.html')
+        return render(request, 'login.html')
+
+
+class ModifyPwdView(View):  # 修改密码方法类，只有post方法
+    def post(self,request):
+        modify_form = ModifyPwdForm(request.POST)
+        if modify_form.is_valid():  # POST有效
+            pwd1 = request.POST.get('password1','')
+            pwd2 = request.POST.get('password2','')
+            email = request.POST.get('email','')
+            if pwd1 != pwd2:
+                return render(request, 'password_reset.html', {'email':email , 'msg':u'密码不一致'})  # 向页面传递email
+            user = UserProfile.objects.get(email=email)
+            user.password = make_password(pwd1)
+            user.save()
+            return render(request, 'login.html')
+        else:
+            email = request.POST.get('email','')
+            return render(request, 'password_reset.html', {'email': email, 'modify_form': modify_form})  # 向页面传递email
+
