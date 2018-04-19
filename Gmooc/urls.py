@@ -17,11 +17,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 from extra_apps import xadmin
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView
 from organization.views import OrgView
-
+from Gmooc.settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),  # 对应在html文件中的ur
@@ -35,5 +36,7 @@ urlpatterns = [
 
     # 课程机构首页
     url(r'^org_list/$', OrgView.as_view(), name='org_list'),
+    # 配置上传文件的访问方法函数
+    url(r'^media/(?P<path>.*)$',serve, {'document_root': MEDIA_ROOT}),
 
 ]
