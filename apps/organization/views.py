@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import View
 
 from .models import CourseOrg,CityDict
+from .forms import UserAskForm
 
 
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
@@ -52,3 +53,10 @@ class OrgView(View):
             'hot_orgs' : hot_orgs,
             'sort' : sort,
         })
+
+
+class AddUserAskView(View):
+    def post(self,request):
+        userask_form = UserAskForm(request.POST)
+        if userask_form.is_valid():
+            user_ask = userask_form.save(commit=True)

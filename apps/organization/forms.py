@@ -5,7 +5,7 @@ from django import forms
 from operation.models import UserAsk
 
 
-class AnotherUserForm(forms.ModelForm):
+class UserAskForm(forms.ModelForm):
 
     class Meta:
         model = UserAsk
