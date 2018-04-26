@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}课程机构列表 - 慕学在线网{% endblock %}
+{% block title %}
+课程机构列表 - 慕学在线网
+{% endblock %}
 {% load staticfiles %}
 {% block content %}
-<section>
+    <section>
     <div class="wp butler_list_box list">
         <div class='left'>
             <div class="listoptions">
@@ -24,10 +26,8 @@
                         <h2>所在地区</h2>
                         <div class="more">更多</div>
                         <div class="cont">
-                            <a href="?ct={{ category }}"><span class="{% ifequal city_id '' %}active2{% endifequal %}">全部</span></a>
-                            {% for city in all_citys %}
-                                <a href="?city={{ city.id }}&ct={{ category }}"><span class="{% ifequal city_id city.id|stringformat:'i' %}active2{% endifequal %}">{{ city.name }}</span></a>
-                            {% endfor %}
+                            <a href="?ct={{ category }}"><span class="{% ifequal city_id '' %}active2{% endifequal %}">全部</span></a> {% for city in all_citys %}
+                            <a href="?city={{ city.id }}&ct={{ category }}"><span class="{% ifequal city_id city.id|stringformat:'i' %}active2{% endifequal %}">{{ city.name }}</span></a> {% endfor %}
                         </div>
                     </li>
                 </ul>
@@ -55,15 +55,18 @@
                                     <h1>{{ course_org.name }}</h1>
                                     <div class="pic fl">
 
-                                        <img src="{% static 'images/authentication.png' %}"/>
+                                        <img src="{% static 'images/authentication.png' %}" />
 
-                                        <img src="{% static 'images/gold.png' %}"/>
+                                        <img src="{% static 'images/gold.png' %}" />
 
                                     </div>
                                 </a>
                             </div>
                             <ul class="cont">
-                                <li class="first"><p class="pic9">课程数：{{ course_org.course_nums }}</p><p class="c7">学习人数：{{ course_org.students }}</p></li>
+                                <li class="first">
+                                    <p class="pic9">课程数：{{ course_org.course_nums }}</p>
+                                    <p class="c7">学习人数：{{ course_org.students }}</p>
+                                </li>
                                 <li class="c8" style="padding-left:18px;">{{ course_org.address }}</li>
                                 <li class="pic10" style="padding-left:18px;">经典课程：
 
@@ -84,21 +87,15 @@
                 <div class="pageturn">
                     <ul class="pagelist">
                         {% if all_orgs.has_previous %}
-                            <li class="long"><a href="?{{ all_orgs.previous_page_number.querystring }}">上一页</a></li>
-                        {% endif %}
-                        {% for page in all_orgs.pages %}
-                            {% if page %}
-                                {% ifequal page all_orgs.number %}
-                                    <li class="active"><a href="?page=1">{{ page }}</a></li>
-                                {% else %}
-                                    <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
-                                {% endifequal %}
-                            {% else %}
-                                <li class="none"><a href="">...</a></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if all_orgs.has_next %}
-                            <li class="long"><a href="?{{ all_orgs.next_page_number.querystring }}">下一页</a></li>
+                        <li class="long"><a href="?{{ all_orgs.previous_page_number.querystring }}">上一页</a></li>
+                        {% endif %} {% for page in all_orgs.pages %} {% if page %} {% ifequal page all_orgs.number %}
+                        <li class="active"><a href="?page=1">{{ page }}</a></li>
+                        {% else %}
+                        <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %} {% else %}
+                        <li class="none"><a href="">...</a></li>
+                        {% endif %} {% endfor %} {% if all_orgs.has_next %}
+                        <li class="long"><a href="?{{ all_orgs.next_page_number.querystring }}">下一页</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -109,15 +106,15 @@
             <div class="head">我要学习</div>
             <form class="rightform" id="jsStayForm">
                 <div>
-                    <img src="{% static 'images/rightform1.png' %}"/>
+                    <img src="{% static 'images/rightform1.png' %}" />
                     <input type="text" name="name" id="companyName" placeholder="名字" maxlength="25" />
                 </div>
                 <div>
-                    <img src="{% static 'images/rightform2.png' %}"/>
-                    <input type="text" name="mobile" id="companyMobile" placeholder="联系电话"/>
+                    <img src="{% static 'images/rightform2.png' %}" />
+                    <input type="text" name="mobile" id="companyMobile" placeholder="联系电话" />
                 </div>
                 <div>
-                    <img src="{% static 'images/rightform3.png' %}"/>
+                    <img src="{% static 'images/rightform3.png' %}" />
                     <input type="text" name="course_name" id="companyAddress" placeholder="课程名" maxlength="50" />
                 </div>
                 <p class="error company-tips" id="jsCompanyTips"></p>
@@ -129,10 +126,12 @@
         <div class="right companyrank layout">
             <div class="head">授课机构排名</div>
             {% for current_org in hot_orgs %}
-                        <dl class="des">
+            <dl class="des">
                 <dt class="num fl">{{ forloop.counter }}</dt>
                 <dd>
-                    <a href="/company/2/"><h1>{{ current_org.name }}</h1></a>
+                    <a href="/company/2/">
+                        <h1>{{ current_org.name }}</h1>
+                    </a>
                     <p>{{ current_org.address }}</p>
                 </dd>
             </dl>
@@ -143,4 +142,27 @@
         </div>
     </div>
 </section>
+{% endblock %}
+{% block custom_js %}
+<script>
+    $(function() {
+        $('#jsStayBtn').on('click', function() {
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "org:add_ask" %}",
+                data: $('#jsStayForm').serialize(),
+                async: true,
+                success: function(data) {
+                    if (data.status == 'success') {
+                        $('#jsStayForm')[0].reset();
+                        alert("提交成功")
+                    } else if (data.status == 'fail') {
+                        $('#jsCompanyTips').html(data.msg)
+                    }
+                },
+            });
+        });
+    })
+</script>
 {% endblock %}
