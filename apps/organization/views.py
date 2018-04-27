@@ -6,6 +6,7 @@ import json
 
 from .models import CourseOrg,CityDict
 from .forms import UserAskForm
+from courses.models import Course
 
 
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
@@ -71,3 +72,18 @@ class AddUserAskView(View):
             #return HttpResponse("{'status': 'fail','msg':'添加出错'}",content_type="application/json")
             return HttpResponse(json.dumps({'status': 'fail','msg':'添加出错'}),content_type="application/json")
 
+
+class OrgHomeView(View):
+    '''
+    机构首页
+    '''
+    def get(self, request, org_id):
+        course_org = CourseOrg.objects.get(id=int(org_id))
+        all_courses = course_org.course_set.all()[:3]  # 通过外键定义的关系反向查找
+        all_teachers = course_org.teacher_set.all()[:1]
+        return render(request, 'org-detail-homepage.html',{
+            'all_courses' : all_courses,
+            'all_teachers' : all_teachers,
+            'course_org' : course_org,
+
+        })
