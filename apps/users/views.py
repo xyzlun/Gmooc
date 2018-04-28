@@ -64,7 +64,7 @@ class RegisterView(View):  # 注册页面后台逻辑
 
 
 class ActiveUserView(View):  # 激活用户后台逻辑
-    def  get(self, request, active_code):
+    def get(self, request, active_code):
         all_record = EmailVerifyRecord.objects.filter(code=active_code)  # 查询激活码和获取到的active_code相同的记录
         if all_record:  # 如果不为空
             for record in all_record:  # 遍历记录
@@ -97,7 +97,7 @@ class ResetView(View):  # 用户重置密码获取链接后台逻辑，只有get
         if all_record:  # 如果不为空
             for record in all_record:  # 遍历记录
                 email = record.email
-                return  render(request, 'password_reset.html', {'email':email})  # 向页面传递email
+                return render(request, 'password_reset.html', {'email':email})  # 向页面传递email
         else:
             return render(request, 'active_fail.html')
         return render(request, 'login.html')
