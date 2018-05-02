@@ -19,6 +19,7 @@ class OrgView(View):
     '''
     def get(self,request):
         #课程机构
+        current_page = 'org_list'
         all_orgs = CourseOrg.objects.all()
         hot_orgs = all_orgs.order_by("-click_num")[:3]  # 对机构的点击量进行排序后取出前三个
         #城市
@@ -39,6 +40,10 @@ class OrgView(View):
             all_orgs = all_orgs.order_by('-course_nums')
         org_nums = all_orgs.count()
 
+        all_courses = {}
+        for item in all_orgs:
+            all_courses[item] = item.course_set.all()[:3]  # 通过外键定义的关系反向查找
+
         # 对课程机构进行分页
         try:
             page = request.GET.get('page', 1)
@@ -55,6 +60,8 @@ class OrgView(View):
             'category' : category,
             'hot_orgs' : hot_orgs,
             'sort' : sort,
+            'all_courses' : all_courses,
+            'current_page' : current_page
         })
 
 class AddUserAskView(View):
@@ -172,7 +179,6 @@ class AddFavView(View):
         if not request.user.is_authenticated():
             # 判断用户登录状态
             return HttpResponse(json.dumps({'status': 'fail', 'msg': '用户未登录'}), content_type="application/json")
-
         exist_records = UserFavorite.objects.filter(user=request.user, fav_id=int(fav_id), fav_type=int(fav_type))
         if exist_records:
             #如果记录已经存在，则表示用户取消收藏

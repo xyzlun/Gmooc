@@ -69,10 +69,14 @@
                                 </li>
                                 <li class="c8" style="padding-left:18px;">{{ course_org.address }}</li>
                                 <li class="pic10" style="padding-left:18px;">经典课程：
+                                    {% for course,value in all_courses.items %}
+                                    {% ifequal course.name course_org.name %}
+                                    {% for lesson in value %}
+                                    <a href="/diary/19/">{{ lesson.name }}</a>
+                                    {% endfor %}
+                                    {% endifequal %}
+                                    {% endfor %}
 
-                                    <a href="/diary/19/">c语言基础入门</a>
-
-                                    <a href="/diary/16/">数据库基础</a>
 
                                 </li>
                             </ul>
