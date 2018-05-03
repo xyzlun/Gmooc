@@ -5,13 +5,14 @@ from datetime import datetime
 from django.db import models
 
 
-from organization.models import CourseOrg
+from organization.models import CourseOrg,Teacher
 
 # Create your models here.
 
 
 class Course(models.Model):
     course_org = models.ForeignKey(CourseOrg, verbose_name=u'课程机构', null=True, blank=True)
+    teacher = models.ForeignKey(Teacher, verbose_name=u'讲师', null=True, blank=True)
     name = models.CharField(max_length=50, verbose_name=u'课程名')
     desc = models.CharField(max_length=300, verbose_name=u'课程描述')
     detail = models.TextField(verbose_name=u'课程详情')
@@ -24,6 +25,8 @@ class Course(models.Model):
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u'添加时间')
     category = models.CharField(verbose_name=u'课程类别', default=u'后端开发', max_length=20)
     tag = models.CharField(default='', verbose_name=u'课程标签', max_length=10)
+    need_know = models.CharField(max_length=300, verbose_name=u'课程须知', default='')
+    teacher_tell = models.CharField(max_length=300, verbose_name=u'老师告诉你', default='')
     class Meta:
         verbose_name = u'课程'
         verbose_name_plural = verbose_name
