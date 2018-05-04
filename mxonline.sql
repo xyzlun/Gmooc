@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-05-03 17:17:15
+Date: 2018-05-04 20:38:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -279,12 +279,12 @@ CREATE TABLE `courses_course` (
 -- ----------------------------
 -- Records of courses_course
 -- ----------------------------
-INSERT INTO `courses_course` VALUES ('1', 'django入门', 'django入门', 'django入门', 'cj', '0', '0', '0', 'courses/2018/05/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '40', '2018-04-08 15:02:00.000000', '1', '后端开发', 'python', '1', 'python基础', 'django进阶开发');
+INSERT INTO `courses_course` VALUES ('1', 'django入门', 'django入门', 'django入门', 'cj', '0', '0', '0', 'courses/2018/05/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '44', '2018-04-08 15:02:00.000000', '1', '后端开发', 'python', '1', 'python基础', 'django进阶开发');
 INSERT INTO `courses_course` VALUES ('2', 'python入门', 'python入门', 'python入门', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540_7vSlS4v.jpg', '2', '2018-05-02 16:16:00.000000', '2', '后端开发', 'python', '2', '', '');
 INSERT INTO `courses_course` VALUES ('3', 'python入门2', 'python入门2', 'python入门2', 'zj', '0', '0', '0', 'courses/2018/05/b72954ee520a9a065bca726b57597fdad36beefe3e2bd-rFVGaH_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('4', 'python入门3', 'python入门3', 'python入门3', 'gj', '0', '0', '0', 'courses/2018/05/timg_4OSfqh2.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('5', 'python入门4', 'python入门4', 'python入门4', 'cj', '0', '0', '0', 'courses/2018/05/a6c40a978dfb0bbeae54d5c4bd8c732272e930d048893-brax02_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '5', '后端开发', '', null, '', '');
-INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '14', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
+INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '20', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('7', 'python入门6', 'python入门6', 'python入门6', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540.jpg', '0', '2018-05-02 16:19:00.000000', '1', '后端开发', '', null, '', '');
 
 -- ----------------------------
@@ -489,7 +489,7 @@ CREATE TABLE `django_session` (
 -- ----------------------------
 -- Records of django_session
 -- ----------------------------
-INSERT INTO `django_session` VALUES ('5cnui5jcilg37av3xbipk32dki12ru37', 'ZThmY2VjNmE3NTNiYjVlZDVkZjc5MTUyNDNlMjBhZmE5NWNlN2Y3MDp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiTElTVF9RVUVSWSI6W1siY291cnNlcyIsImNvdXJzZSJdLCIiXSwiX2F1dGhfdXNlcl9oYXNoIjoiYjliZTg3ZTdmZmVjY2RjMjkxODk4NWNjODdjZDcwNzQxMTdmNTY2MiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQifQ==', '2018-05-17 17:15:09.735000');
+INSERT INTO `django_session` VALUES ('q6yakykmwvcvavu74br2mg2i02t5frqk', 'ZjdmODg0OWVjNGZhNDBhY2RmN2I3MjllZDU1ZjcxODM4N2I4Njg4Yzp7Il9hdXRoX3VzZXJfaGFzaCI6ImI5YmU4N2U3ZmZlY2NkYzI5MTg5ODVjYzg3Y2Q3MDc0MTE3ZjU2NjIiLCJfYXV0aF91c2VyX2lkIjoiNCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQifQ==', '2018-05-18 16:48:10.214000');
 INSERT INTO `django_session` VALUES ('u6qb1oe4uza2qqseblmv1ebsad4mdytf', 'MTM4YTU2NzA3ODE5YTY1NTgxZDMxZDMwMzNhNDZlZjE1NzgzNjMyMjp7Il9hdXRoX3VzZXJfaGFzaCI6IjMxY2ZjZTFhOWM1ZDIwOGQ2YWQwYzFiNDg4ZTk0NWY3ZGQyYjliYTMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJ1c2Vycy52aWV3cy5DdXN0b21CYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjExIn0=', '2018-04-26 17:31:43.084000');
 
 -- ----------------------------
@@ -507,11 +507,16 @@ CREATE TABLE `operation_coursecomments` (
   KEY `operation_coursecomment_user_id_f5ff70b3_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `operation_coursecomment_user_id_f5ff70b3_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`),
   CONSTRAINT `operation_coursecomments_course_id_c88f1b6a_fk_courses_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses_course` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of operation_coursecomments
 -- ----------------------------
+INSERT INTO `operation_coursecomments` VALUES ('1', '打得不错', '2018-05-04 16:24:46.012000', '1', '4');
+INSERT INTO `operation_coursecomments` VALUES ('2', '打的很不错', '2018-05-04 16:25:13.104000', '1', '4');
+INSERT INTO `operation_coursecomments` VALUES ('3', '可以可以', '2018-05-04 16:25:25.291000', '1', '4');
+INSERT INTO `operation_coursecomments` VALUES ('4', '666', '2018-05-04 16:26:05.543000', '1', '4');
+INSERT INTO `operation_coursecomments` VALUES ('5', '强', '2018-05-04 16:54:24.040000', '1', '4');
 
 -- ----------------------------
 -- Table structure for operation_userask
@@ -750,7 +755,7 @@ CREATE TABLE `users_userprofile` (
 -- Records of users_userprofile
 -- ----------------------------
 INSERT INTO `users_userprofile` VALUES ('1', 'pbkdf2_sha256$24000$CNfQRdrGtbvN$xY4wN+62y2JHT/LOHgsH2wq0gnEtC04D4VsewnIssns=', '2018-04-20 09:12:00.000000', '1', 'admin', '', '', '1@1.com', '1', '1', '2018-04-04 07:23:00.000000', 'admin', null, 'female', '北京', '', 'image/2018/05/b72954ee520a9a065bca726b57597fdad36beefe3e2bd-rFVGaH_fw658.jpg');
-INSERT INTO `users_userprofile` VALUES ('4', 'pbkdf2_sha256$24000$b6ISDzYGJ0zn$FVl22g4OWlSvk6Hmz8apfiuvlZZ9wcJdbzHbSCib8u0=', '2018-05-02 09:29:00.000000', '1', 'chengtianlun', '', '', '2@2.com', '1', '1', '2018-04-04 16:24:00.000000', 'chengtianlun', null, 'male', '成都', '', 'image/2018/05/curry.jpg');
+INSERT INTO `users_userprofile` VALUES ('4', 'pbkdf2_sha256$24000$b6ISDzYGJ0zn$FVl22g4OWlSvk6Hmz8apfiuvlZZ9wcJdbzHbSCib8u0=', '2018-05-04 16:48:09.755000', '1', 'chengtianlun', '', '', '2@2.com', '1', '1', '2018-04-04 16:24:00.000000', 'chengtianlun', null, 'male', '成都', '', 'image/2018/05/curry.jpg');
 INSERT INTO `users_userprofile` VALUES ('7', 'admin123', null, '0', 'yyx', '', '', '', '0', '1', '2018-04-04 16:37:00.000000', 'yyx', null, 'female', 'chengdu', '', 'image/2018/05/timg.jpg');
 INSERT INTO `users_userprofile` VALUES ('11', 'pbkdf2_sha256$24000$axXGqfAXpWJx$1iDMMOUJNAZ7T7gL3bDzPu/xQMJqHEdfPLAHOt/U6wE=', '2018-04-16 16:31:00.000000', '0', '450347106@qq.com', '', '', '450347106@qq.com', '0', '1', '2018-04-12 16:44:00.000000', '450347106', null, 'female', '杭州', '', 'image/2018/05/20180409111540.jpg');
 
