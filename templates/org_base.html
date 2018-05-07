@@ -66,8 +66,8 @@
                         </h1>
                         <p class="fl">
                             <span class="fl" style="margin-top:8px;color:#848484;">推荐指数： </span>
-                            <span class="precision company-credit" data-star-scope="5.0"></span>
-                            <span class="key">5.0</span>
+                            <span class="precision company-credit" data-star-scope="{{ course_org.recommend }}"></span>
+                            <span class="key">{{ course_org.recommend }}</span>
                         </p>
                     </div>
                     <div class="btn fr collectionbtn  notlogin
@@ -82,7 +82,7 @@
 <section>
 	<div class="wp">
 		<ul  class="crumbs">
-            <li><a href="index.html">首页</a>></li>
+            <li><a href="{% url 'index' %}">首页</a>></li>
 			<li><a href="{% url 'org:org_list' %}">课程机构</a>></li>
 			<li>{% block page_path %}机构首页{% endblock %}</li>
 		</ul>

@@ -26,12 +26,12 @@ class OrgView(View):
         all_citys = CityDict.objects.all()
         # 取出筛选城市
         city_id = request.GET.get('city', '')
-        if city_id:
-            all_orgs = CourseOrg.objects.filter(city_id=int(city_id))
+        # if city_id:
+        #     all_orgs = CourseOrg.objects.filter(city_id=int(city_id))
         # 类别筛选
         category = request.GET.get('ct', '')
-        if category:
-            all_orgs = CourseOrg.objects.filter(category=category)
+        if category and city_id:
+            all_orgs = CourseOrg.objects.filter(city_id=int(city_id),category=category)
         # 排序
         sort = request.GET.get('sort', '')
         if sort == 'students':
@@ -43,7 +43,6 @@ class OrgView(View):
         all_courses = {}
         for item in all_orgs:
             all_courses[item] = item.course_set.all()[:3]  # 通过外键定义的关系反向查找
-
         # 对课程机构进行分页
         try:
             page = request.GET.get('page', 1)

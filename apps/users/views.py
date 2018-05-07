@@ -46,7 +46,7 @@ class RegisterView(View):  # 注册页面后台逻辑
         return render(request, 'register.html', {'register_form':register_form})
     def post(self,request):  # 如果为POST方法时的逻辑
         register_form = RegisterForm(request.POST)
-        if  register_form.is_valid():  # RegisterForm实例验证结果
+        if register_form.is_valid():  # RegisterForm实例验证结果
             user_name = request.POST.get('email','')
             if UserProfile.objects.filter(email=user_name):  # 验证用户是否存在
                 return render(request, 'register.html', {'register_form': register_form, 'msg': u'用户已存在!'})

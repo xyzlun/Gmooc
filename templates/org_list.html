@@ -72,7 +72,7 @@
                                     {% for course,value in all_courses.items %}
                                     {% ifequal course.name course_org.name %}
                                     {% for lesson in value %}
-                                    <a href="/diary/19/">{{ lesson.name }}</a>
+                                    <a href="{% url 'course:course_detail' lesson.id %}">{{ lesson.name }}</a>
                                     {% endfor %}
                                     {% endifequal %}
                                     {% endfor %}
@@ -133,7 +133,7 @@
             <dl class="des">
                 <dt class="num fl">{{ forloop.counter }}</dt>
                 <dd>
-                    <a href="/company/2/">
+                    <a href="{% url 'org:org_home' current_org.id %}">
                         <h1>{{ current_org.name }}</h1>
                     </a>
                     <p>{{ current_org.address }}</p>
