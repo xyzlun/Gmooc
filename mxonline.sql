@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-05-04 20:38:25
+Date: 2018-05-07 17:30:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -241,7 +241,7 @@ CREATE TABLE `captcha_captchastore` (
   `expiration` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `hashkey` (`hashkey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of captcha_captchastore
@@ -279,13 +279,13 @@ CREATE TABLE `courses_course` (
 -- ----------------------------
 -- Records of courses_course
 -- ----------------------------
-INSERT INTO `courses_course` VALUES ('1', 'django入门', 'django入门', 'django入门', 'cj', '0', '0', '0', 'courses/2018/05/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '44', '2018-04-08 15:02:00.000000', '1', '后端开发', 'python', '1', 'python基础', 'django进阶开发');
+INSERT INTO `courses_course` VALUES ('1', 'django入门', 'django入门', 'django入门', 'cj', '0', '0', '0', 'courses/2018/05/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '49', '2018-04-08 15:02:00.000000', '1', '后端开发', 'python', '1', 'python基础', 'django进阶开发');
 INSERT INTO `courses_course` VALUES ('2', 'python入门', 'python入门', 'python入门', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540_7vSlS4v.jpg', '2', '2018-05-02 16:16:00.000000', '2', '后端开发', 'python', '2', '', '');
 INSERT INTO `courses_course` VALUES ('3', 'python入门2', 'python入门2', 'python入门2', 'zj', '0', '0', '0', 'courses/2018/05/b72954ee520a9a065bca726b57597fdad36beefe3e2bd-rFVGaH_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('4', 'python入门3', 'python入门3', 'python入门3', 'gj', '0', '0', '0', 'courses/2018/05/timg_4OSfqh2.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('5', 'python入门4', 'python入门4', 'python入门4', 'cj', '0', '0', '0', 'courses/2018/05/a6c40a978dfb0bbeae54d5c4bd8c732272e930d048893-brax02_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '5', '后端开发', '', null, '', '');
-INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '20', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
-INSERT INTO `courses_course` VALUES ('7', 'python入门6', 'python入门6', 'python入门6', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540.jpg', '0', '2018-05-02 16:19:00.000000', '1', '后端开发', '', null, '', '');
+INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '24', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
+INSERT INTO `courses_course` VALUES ('7', 'python入门6', 'python入门6', 'python入门6', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540.jpg', '2', '2018-05-02 16:19:00.000000', '1', '后端开发', '', null, '', '');
 
 -- ----------------------------
 -- Table structure for courses_courseresource
@@ -429,7 +429,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -473,6 +473,9 @@ INSERT INTO `django_migrations` VALUES ('36', 'courses', '0006_video_url', '2018
 INSERT INTO `django_migrations` VALUES ('37', 'courses', '0007_video_learn_times', '2018-05-03 16:28:49.993000');
 INSERT INTO `django_migrations` VALUES ('38', 'courses', '0008_auto_20180503_1652', '2018-05-03 16:53:03.828000');
 INSERT INTO `django_migrations` VALUES ('39', 'courses', '0009_auto_20180503_1713', '2018-05-03 17:13:33.973000');
+INSERT INTO `django_migrations` VALUES ('40', 'organization', '0007_teacher_recommend', '2018-05-07 15:25:34.429000');
+INSERT INTO `django_migrations` VALUES ('41', 'organization', '0008_auto_20180507_1525', '2018-05-07 15:25:35.807000');
+INSERT INTO `django_migrations` VALUES ('42', 'organization', '0009_teacher_age', '2018-05-07 16:23:50.496000');
 
 -- ----------------------------
 -- Table structure for django_session
@@ -489,7 +492,7 @@ CREATE TABLE `django_session` (
 -- ----------------------------
 -- Records of django_session
 -- ----------------------------
-INSERT INTO `django_session` VALUES ('q6yakykmwvcvavu74br2mg2i02t5frqk', 'ZjdmODg0OWVjNGZhNDBhY2RmN2I3MjllZDU1ZjcxODM4N2I4Njg4Yzp7Il9hdXRoX3VzZXJfaGFzaCI6ImI5YmU4N2U3ZmZlY2NkYzI5MTg5ODVjYzg3Y2Q3MDc0MTE3ZjU2NjIiLCJfYXV0aF91c2VyX2lkIjoiNCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQifQ==', '2018-05-18 16:48:10.214000');
+INSERT INTO `django_session` VALUES ('8ol4suhoywbzceb54n0kcz3j9me114iu', 'MTlhZjcyNDhhODQ4YTJmZWRiZWNiZmMzNzI1YzRlODQ1YmE5OTQ3Njp7Il9hdXRoX3VzZXJfaGFzaCI6ImI5YmU4N2U3ZmZlY2NkYzI5MTg5ODVjYzg3Y2Q3MDc0MTE3ZjU2NjIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJ1c2Vycy52aWV3cy5DdXN0b21CYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjQifQ==', '2018-05-21 15:17:06.474000');
 INSERT INTO `django_session` VALUES ('u6qb1oe4uza2qqseblmv1ebsad4mdytf', 'MTM4YTU2NzA3ODE5YTY1NTgxZDMxZDMwMzNhNDZlZjE1NzgzNjMyMjp7Il9hdXRoX3VzZXJfaGFzaCI6IjMxY2ZjZTFhOWM1ZDIwOGQ2YWQwYzFiNDg4ZTk0NWY3ZGQyYjliYTMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJ1c2Vycy52aWV3cy5DdXN0b21CYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjExIn0=', '2018-04-26 17:31:43.084000');
 
 -- ----------------------------
@@ -634,6 +637,7 @@ CREATE TABLE `organization_courseorg` (
   `category` varchar(10) NOT NULL,
   `course_nums` int(11) NOT NULL,
   `students` int(11) NOT NULL,
+  `recommend` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `organization_course_city_id_4a842f85_fk_organization_citydict_id` (`city_id`),
   CONSTRAINT `organization_course_city_id_4a842f85_fk_organization_citydict_id` FOREIGN KEY (`city_id`) REFERENCES `organization_citydict` (`id`)
@@ -642,16 +646,16 @@ CREATE TABLE `organization_courseorg` (
 -- ----------------------------
 -- Records of organization_courseorg
 -- ----------------------------
-INSERT INTO `organization_courseorg` VALUES ('1', '慕学网01', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_PZ0LaR9.png', '北京', '2018-04-24 15:00:00.000000', '1', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('2', '慕学网02', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_PZ0LaR9_cckKM2g.png', '上海', '2018-04-24 15:04:00.000000', '2', 'gx', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('3', '慕学网03', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_yeT8zqy_CWj4J99.png', '广州', '2018-04-24 15:05:00.000000', '3', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('4', '慕学网04', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_3kO9Q3W_m3ONtss.png', '深圳', '2018-04-24 15:05:00.000000', '4', 'gx', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('5', '慕学网05', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_3kO9Q3W_m3ONtss_vMiFJOR.png', '杭州', '2018-04-24 15:05:00.000000', '5', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('6', '慕学网06', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_ObUAywt_2M2PXmn.png', '成都', '2018-04-24 15:05:00.000000', '6', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('7', '慕学网07', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw.png', '北京', '2018-04-24 15:12:00.000000', '1', 'gr', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('8', '慕学网08', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_Fz5hmsw.png', '上海', '2018-04-24 15:12:00.000000', '2', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('9', '慕学网09', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_Fz5hmsw_rjxFJA3.png', '广州', '2018-04-24 15:13:00.000000', '3', 'pxjg', '0', '0');
-INSERT INTO `organization_courseorg` VALUES ('10', '慕学网10', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_O50D9IN.png', '深圳', '2018-04-24 15:13:00.000000', '4', 'gr', '0', '0');
+INSERT INTO `organization_courseorg` VALUES ('1', '慕学网01', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_PZ0LaR9.png', '北京', '2018-04-24 15:00:00.000000', '1', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('2', '慕学网02', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_PZ0LaR9_cckKM2g.png', '上海', '2018-04-24 15:04:00.000000', '2', 'gx', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('3', '慕学网03', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_yeT8zqy_CWj4J99.png', '广州', '2018-04-24 15:05:00.000000', '3', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('4', '慕学网04', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_3kO9Q3W_m3ONtss.png', '深圳', '2018-04-24 15:05:00.000000', '4', 'gx', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('5', '慕学网05', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_3kO9Q3W_m3ONtss_vMiFJOR.png', '杭州', '2018-04-24 15:05:00.000000', '5', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('6', '慕学网06', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_ObUAywt_2M2PXmn.png', '成都', '2018-04-24 15:05:00.000000', '6', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('7', '慕学网07', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw.png', '北京', '2018-04-24 15:12:00.000000', '1', 'gr', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('8', '慕学网08', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_Fz5hmsw.png', '上海', '2018-04-24 15:12:00.000000', '2', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('9', '慕学网09', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_Fz5hmsw_rjxFJA3.png', '广州', '2018-04-24 15:13:00.000000', '3', 'pxjg', '0', '0', '4');
+INSERT INTO `organization_courseorg` VALUES ('10', '慕学网10', '慕课网是垂直的互联网IT技能免费学习网站。以独家视频教程、在线编程工具、学习计划、问答社区为核心特色。在这里，你可以找到最好的互联网技术牛人，也可以通过免费的在线公开视频课程学习国内领先的互联网IT技术。', '0', '0', 'org/2018/04/imooc_AB0SCNt_UPP7uTw_O50D9IN.png', '深圳', '2018-04-24 15:13:00.000000', '4', 'gr', '0', '0', '4');
 
 -- ----------------------------
 -- Table structure for organization_teacher
@@ -670,6 +674,7 @@ CREATE TABLE `organization_teacher` (
   `org_id` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `course_num` int(11) NOT NULL,
+  `age` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `organization_teache_org_id_cd000a1a_fk_organization_courseorg_id` (`org_id`),
   CONSTRAINT `organization_teache_org_id_cd000a1a_fk_organization_courseorg_id` FOREIGN KEY (`org_id`) REFERENCES `organization_courseorg` (`id`)
@@ -678,9 +683,9 @@ CREATE TABLE `organization_teacher` (
 -- ----------------------------
 -- Records of organization_teacher
 -- ----------------------------
-INSERT INTO `organization_teacher` VALUES ('1', '程天伦', '5', 'XXX', 'XXX', 'XXX', '0', '0', '2018-04-27 09:12:00.000000', '1', 'teacher/2018/04/aobama.png', '3');
-INSERT INTO `organization_teacher` VALUES ('2', '叶一熹', '4', 'YYY', 'YYY', 'YYY', '0', '0', '2018-04-27 09:13:00.000000', '2', 'teacher/2018/04/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '0');
-INSERT INTO `organization_teacher` VALUES ('3', '二条', '3', 'ZZZ', 'ZZZ', 'XXX', '0', '0', '2018-04-28 15:40:00.000000', '1', 'teacher/2018/04/curry.jpg', '5');
+INSERT INTO `organization_teacher` VALUES ('1', '程天伦', '5', 'XXX', 'XXX', 'XXX', '0', '0', '2018-04-27 09:12:00.000000', '1', 'teacher/2018/04/aobama.png', '3', '0');
+INSERT INTO `organization_teacher` VALUES ('2', '叶一熹', '4', 'YYY', 'YYY', 'YYY', '0', '0', '2018-04-27 09:13:00.000000', '2', 'teacher/2018/04/6aa513bae5e1ca06a6c43d942ffbfe47dd33eb0bc94a-Zvna7r_fw658.jpg', '0', '0');
+INSERT INTO `organization_teacher` VALUES ('3', '二条', '3', 'ZZZ', 'ZZZ', 'XXX', '0', '0', '2018-04-28 15:40:00.000000', '1', 'teacher/2018/04/curry.jpg', '5', '0');
 
 -- ----------------------------
 -- Table structure for users_banner
@@ -755,7 +760,7 @@ CREATE TABLE `users_userprofile` (
 -- Records of users_userprofile
 -- ----------------------------
 INSERT INTO `users_userprofile` VALUES ('1', 'pbkdf2_sha256$24000$CNfQRdrGtbvN$xY4wN+62y2JHT/LOHgsH2wq0gnEtC04D4VsewnIssns=', '2018-04-20 09:12:00.000000', '1', 'admin', '', '', '1@1.com', '1', '1', '2018-04-04 07:23:00.000000', 'admin', null, 'female', '北京', '', 'image/2018/05/b72954ee520a9a065bca726b57597fdad36beefe3e2bd-rFVGaH_fw658.jpg');
-INSERT INTO `users_userprofile` VALUES ('4', 'pbkdf2_sha256$24000$b6ISDzYGJ0zn$FVl22g4OWlSvk6Hmz8apfiuvlZZ9wcJdbzHbSCib8u0=', '2018-05-04 16:48:09.755000', '1', 'chengtianlun', '', '', '2@2.com', '1', '1', '2018-04-04 16:24:00.000000', 'chengtianlun', null, 'male', '成都', '', 'image/2018/05/curry.jpg');
+INSERT INTO `users_userprofile` VALUES ('4', 'pbkdf2_sha256$24000$b6ISDzYGJ0zn$FVl22g4OWlSvk6Hmz8apfiuvlZZ9wcJdbzHbSCib8u0=', '2018-05-07 15:17:06.371000', '1', 'chengtianlun', '', '', '2@2.com', '1', '1', '2018-04-04 16:24:00.000000', 'chengtianlun', null, 'male', '成都', '', 'image/2018/05/curry.jpg');
 INSERT INTO `users_userprofile` VALUES ('7', 'admin123', null, '0', 'yyx', '', '', '', '0', '1', '2018-04-04 16:37:00.000000', 'yyx', null, 'female', 'chengdu', '', 'image/2018/05/timg.jpg');
 INSERT INTO `users_userprofile` VALUES ('11', 'pbkdf2_sha256$24000$axXGqfAXpWJx$1iDMMOUJNAZ7T7gL3bDzPu/xQMJqHEdfPLAHOt/U6wE=', '2018-04-16 16:31:00.000000', '0', '450347106@qq.com', '', '', '450347106@qq.com', '0', '1', '2018-04-12 16:44:00.000000', '450347106', null, 'female', '杭州', '', 'image/2018/05/20180409111540.jpg');
 
