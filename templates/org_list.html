@@ -3,8 +3,18 @@
 课程机构列表 - 慕学在线网
 {% endblock %}
 {% load staticfiles %}
-{% block content %}
+{% block custom_bread %}
     <section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li>课程机构</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+<section>
     <div class="wp butler_list_box list">
         <div class='left'>
             <div class="listoptions">

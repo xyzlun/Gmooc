@@ -7,6 +7,7 @@ from .models import CourseOrg,CityDict
 from .forms import UserAskForm
 from operation.models import UserFavorite
 from courses.models import Course
+from models import Teacher
 
 
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
@@ -194,3 +195,45 @@ class AddFavView(View):
             else:
                 return HttpResponse(json.dumps({'status': 'fail', 'msg': '收藏失败'}), content_type="application/json")
 
+class TeacherListView(View):
+    '''
+    讲师列表页功能
+    '''
+    def get(self, request):
+        current_page = 'teacher_list'
+        all_teachers = Teacher.objects.all()
+        # 排序
+        sort = request.GET.get('sort', '')
+        if sort == 'hot':
+            all_teachers = all_teachers.order_by('-click_num')
+        teacher_num = all_teachers.count()
+
+        #讲师排行
+        sorted_teacher = Teacher.objects.all().order_by('-click_num')[:3]
+
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
+        p = Paginator(all_teachers,3, request=request)
+        teachers = p.page(page)
+
+        return render(request, 'teachers-list.html', {
+            'current_page' : current_page,
+            'teachers' : teachers,
+            'teacher_num' : teacher_num,
+            'sorted_teacher' : sorted_teacher,
+            'sort' : sort
+        })
+
+class TeacherDetailView(View):
+    '''
+    讲师详情页功能
+    '''
+    def get(self, request, teacher_id):
+        current_page = 'teacher_list'
+        teacher = Teacher.objects.get(id=int(teacher_id))
+        return render(request, 'teachers-detail.html', {
+            'current_page' : current_page,
+            'teacher' : teacher,
+        })

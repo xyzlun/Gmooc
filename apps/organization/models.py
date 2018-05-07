@@ -56,6 +56,8 @@ class Teacher(models.Model):
     click_num = models.IntegerField(default=0, verbose_name=u'点击数')
     fav_num = models.IntegerField(default=0, verbose_name=u'收藏数')
     add_time = models.DateTimeField(verbose_name=u'添加时间',default=datetime.now)
+    age = models.IntegerField(default=0, verbose_name=u'年龄')
+
 
 
     class Meta:
