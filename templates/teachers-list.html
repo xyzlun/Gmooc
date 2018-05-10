@@ -81,21 +81,21 @@
 	<div class="right layout">
 		<div class="head">讲师排行榜</div>
             {% for hot_teacher in sorted_teacher %}
-            <dl class="des">
-                <span class="num fl">{{ forloop.counter }}</span>
+        <dl class="des">
+            <span class="num fl">{{ forloop.counter }}</span>
+            <a href="{% url 'org:teacher_detail' hot_teacher.id %}">
+                <dt>
+                    <img width="50" height="50" class="scrollLoading"  src="{{ MEDIA_URL }}{{ hot_teacher.image }}"/>
+                </dt>
+            </a>
+            <dd>
                 <a href="{% url 'org:teacher_detail' hot_teacher.id %}">
-                    <dt>
-                        <img width="50" height="50" class="scrollLoading"  src="{{ MEDIA_URL }}{{ hot_teacher.image }}"/>
-                    </dt>
+                    <h1 title="{{ hot_teacher.name }}">{{ hot_teacher.name }}</h1>
                 </a>
-                <dd>
-                    <a href="{% url 'org:teacher_detail' hot_teacher.id %}">
-                        <h1 title="{{ hot_teacher.name }}">{{ hot_teacher.name }}</h1>
-                    </a>
-                    <p>工作年限：<span>{{ hot_teacher.work_years }}年</span></p>
-                </dd>
-            </dl>
-            {% endfor %}
+                <p>工作年限：<span>{{ hot_teacher.work_years }}年</span></p>
+            </dd>
+        </dl>
+        {% endfor %}
 
 	</div>
     </div>

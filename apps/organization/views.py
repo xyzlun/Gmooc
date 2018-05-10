@@ -210,7 +210,6 @@ class TeacherListView(View):
 
         #讲师排行
         sorted_teacher = Teacher.objects.all().order_by('-click_num')[:3]
-
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -233,7 +232,15 @@ class TeacherDetailView(View):
     def get(self, request, teacher_id):
         current_page = 'teacher_list'
         teacher = Teacher.objects.get(id=int(teacher_id))
-        return render(request, 'teachers-detail.html', {
+        # courses = teacher.course_set.all()
+        courses = Course.objects.filter(teacher=teacher)
+        classic_courses = courses[:3]
+        #讲师排行
+        sorted_teacher = Teacher.objects.all().order_by('-click_num')[:3]
+        return render(request, 'teacher-detail.html', {
             'current_page' : current_page,
             'teacher' : teacher,
+            'sorted_teacher' : sorted_teacher,
+            'courses' : courses,
+            'classic_courses' :classic_courses
         })
