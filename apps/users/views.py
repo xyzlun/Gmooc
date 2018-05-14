@@ -9,6 +9,8 @@ from django.contrib.auth.hashers import make_password
 from .models import UserProfile,EmailVerifyRecord
 from .forms import LoginForm,RegisterForm,ForgetForm,ModifyPwdForm
 from utils.email_send import send_register_email
+
+
 class CustomBackend(ModelBackend):  # 重载用户名密码验证方法
     def authenticate(self, username=None, password=None, **kwargs):
         try:
