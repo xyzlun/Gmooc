@@ -1,8 +1,11 @@
 # _*_ coding:utf-8 _*_
+import json
+
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse
-import json
+from django.db.models import Q
+
 from .models import CourseOrg,CityDict
 from .forms import UserAskForm
 from operation.models import UserFavorite
@@ -25,6 +28,15 @@ class OrgView(View):
         hot_orgs = all_orgs.order_by("-click_num")[:3]  # 对机构的点击量进行排序后取出前三个
         #城市
         all_citys = CityDict.objects.all()
+
+        #机构搜索
+        search_keywords = request.GET.get('keywords', '')
+        if search_keywords:
+            all_orgs = all_orgs.filter(
+                Q(name__icontains=search_keywords)|
+                Q(desc__icontains=search_keywords)
+            )
+
         # 取出筛选城市
         city_id = request.GET.get('city', '')
         # if city_id:
@@ -200,8 +212,17 @@ class TeacherListView(View):
     讲师列表页功能
     '''
     def get(self, request):
-        current_page = 'teacher_list'
         all_teachers = Teacher.objects.all()
+
+        #讲师搜索
+        search_keywords = request.GET.get('keywords', '')
+        if search_keywords:
+            all_teachers = all_teachers.filter(
+                Q(name__icontains=search_keywords)|
+                Q(work_company__icontains=search_keywords)|
+                Q(work_position__icontains=search_keywords)
+            )
+
         # 排序
         sort = request.GET.get('sort', '')
         if sort == 'hot':
@@ -218,7 +239,6 @@ class TeacherListView(View):
         teachers = p.page(page)
 
         return render(request, 'teachers-list.html', {
-            'current_page' : current_page,
             'teachers' : teachers,
             'teacher_num' : teacher_num,
             'sorted_teacher' : sorted_teacher,

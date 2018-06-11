@@ -22,6 +22,7 @@ from django.views.static import serve
 from extra_apps import xadmin
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView
 from Gmooc.settings import MEDIA_ROOT
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),  # 对应在html文件中的ur
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^course/', include('courses.urls', namespace='course')),
     # 配置上传文件的访问方法函数
     url(r'^media/(?P<path>.*)$',serve, {'document_root': MEDIA_ROOT}),
-
+    # 用户中心url配置
+    url(r'^users/', include('users.urls', namespace='users')),
 
 ]

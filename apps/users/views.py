@@ -7,8 +7,9 @@ from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 
 from .models import UserProfile,EmailVerifyRecord
-from .forms import LoginForm,RegisterForm,ForgetForm,ModifyPwdForm
+from .forms import LoginForm,RegisterForm,ForgetForm,ModifyPwdForm,UploadImageForm
 from utils.email_send import send_register_email
+from utils.mixin_utils import LoginRequiredMixin
 
 
 class CustomBackend(ModelBackend):  # 重载用户名密码验证方法
@@ -19,7 +20,6 @@ class CustomBackend(ModelBackend):  # 重载用户名密码验证方法
                 return user
         except Exception as e:
             return None
-
 
 class LoginView(View):  # 登录页面的后台逻辑
     def get(self,request):
@@ -44,7 +44,6 @@ class LoginView(View):  # 登录页面的后台逻辑
         else:
             return render(request, 'login.html', {'login_form':login_form})
 
-
 class RegisterView(View):  # 注册页面后台逻辑
     def get(self, request):  # 如果为GET方法时的逻辑
         register_form = RegisterForm()  # 实例化RegisterForm，并传递回register.html
@@ -67,7 +66,6 @@ class RegisterView(View):  # 注册页面后台逻辑
         else:
             return render(request, 'register.html', {'register_form': register_form ,'msg': u'注册失败!'})
 
-
 class ActiveUserView(View):  # 激活用户后台逻辑
     def get(self, request, active_code):
         all_record = EmailVerifyRecord.objects.filter(code=active_code)  # 查询激活码和获取到的active_code相同的记录
@@ -80,7 +78,6 @@ class ActiveUserView(View):  # 激活用户后台逻辑
         else:
             return render(request, 'active_fail.html')
         return render(request, 'login.html')
-
 
 class ForgetPwdView(View):
     def get(self, request):
@@ -95,7 +92,6 @@ class ForgetPwdView(View):
         else:
             return render(request, 'forgetpwd.html', {'forget_form': forget_form})
 
-
 class ResetView(View):  # 用户重置密码获取链接后台逻辑，只有get方法
     def  get(self, request, reset_code):
         all_record = EmailVerifyRecord.objects.filter(code=reset_code)  # 查询激活码和获取到的active_code相同的记录
@@ -106,7 +102,6 @@ class ResetView(View):  # 用户重置密码获取链接后台逻辑，只有get
         else:
             return render(request, 'active_fail.html')
         return render(request, 'login.html')
-
 
 class ModifyPwdView(View):  # 修改密码方法类，只有post方法
     def post(self,request):
@@ -125,3 +120,18 @@ class ModifyPwdView(View):  # 修改密码方法类，只有post方法
             email = request.POST.get('email','')
             return render(request, 'password_reset.html', {'email': email, 'modify_form': modify_form})  # 向页面传递email
 
+class UserInfoView(LoginRequiredMixin, View):
+    '''
+    用户个人信息
+    '''
+    def get(self,request):
+        return render(request, 'usercenter-info.html', {})
+
+class UploadImageView(LoginRequiredMixin, View):
+    '''
+    用户头像修改
+    '''
+    def post(self,request):
+        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
