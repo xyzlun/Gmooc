@@ -18,6 +18,7 @@ urlpatterns =  [
 
     # 机构收藏
     url(r'^add_fav/$', AddFavView.as_view(), name='add_fav'),
+
     # 讲师相关url配置
     # 讲师列表页
     url(r'^teacher/list/$', TeacherListView.as_view(), name='teacher_list'),
