@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-06-20 14:43:57
+Date: 2018-06-21 17:05:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -284,7 +284,7 @@ INSERT INTO `courses_course` VALUES ('2', 'python入门', 'python入门', 'pytho
 INSERT INTO `courses_course` VALUES ('3', 'python入门2', 'python入门2', 'python入门2', 'zj', '0', '0', '0', 'courses/2018/05/b72954ee520a9a065bca726b57597fdad36beefe3e2bd-rFVGaH_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('4', 'python入门3', 'python入门3', 'python入门3', 'gj', '0', '0', '0', 'courses/2018/05/timg_4OSfqh2.jpg', '0', '2018-05-02 16:18:00.000000', '3', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('5', 'python入门4', 'python入门4', 'python入门4', 'cj', '0', '0', '0', 'courses/2018/05/a6c40a978dfb0bbeae54d5c4bd8c732272e930d048893-brax02_fw658.jpg', '0', '2018-05-02 16:18:00.000000', '5', '后端开发', '', null, '', '');
-INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '28', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
+INSERT INTO `courses_course` VALUES ('6', 'python入门5', 'python入门5', 'python入门5', 'cj', '0', '0', '0', 'courses/2018/05/timg.jpg', '29', '2018-05-02 16:19:00.000000', '6', '后端开发', '', null, '', '');
 INSERT INTO `courses_course` VALUES ('7', 'python入门6', 'python入门6', 'python入门6', 'cj', '0', '0', '0', 'courses/2018/05/20180409111540.jpg', '2', '2018-05-02 16:19:00.000000', '1', '后端开发', '', null, '', '');
 
 -- ----------------------------
@@ -497,7 +497,7 @@ CREATE TABLE `django_session` (
 -- Records of django_session
 -- ----------------------------
 INSERT INTO `django_session` VALUES ('aj15lcyzc8sbueq9xmwjiyrh3sayhcs5', 'ZTFkYzUyMTQ4MDljNTZmOTQxNTU5YThiMDc3MTE3MDNjMDc4NzdjODp7Il9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQiLCJMSVNUX1FVRVJZIjpbWyJvcmdhbml6YXRpb24iLCJjb3Vyc2VvcmciXSwiIl0sIl9hdXRoX3VzZXJfaGFzaCI6ImI5YmU4N2U3ZmZlY2NkYzI5MTg5ODVjYzg3Y2Q3MDc0MTE3ZjU2NjIiLCJfYXV0aF91c2VyX2lkIjoiNCJ9', '2018-05-28 15:16:51.860000');
-INSERT INTO `django_session` VALUES ('n92oqr2gja8sd54nhu0c9m0weuzo0cif', 'MTVmNWRkOTZmY2NiNzRjNDdlNGVmZWFjNjNmNWNlMDk4MjJhMTBlODp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwidGVhY2hlciJdLCIiXSwiX2F1dGhfdXNlcl9oYXNoIjoiYTk4ZTczYmQ2OGNjYWYxMTNkNjRlZDJmMjgwYjJmNjQxYzYyOGE5ZCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQifQ==', '2018-07-03 15:40:54.753000');
+INSERT INTO `django_session` VALUES ('n92oqr2gja8sd54nhu0c9m0weuzo0cif', 'Y2M2OWEyOTNkOWNiMTIzOTcyMjBhMGZjZGQyZjZjMmJmZmU1M2IxZjp7Il9hdXRoX3VzZXJfaWQiOiI0IiwiTElTVF9RVUVSWSI6W1sib3BlcmF0aW9uIiwidXNlcm1lc3NhZ2UiXSwiIl0sIl9hdXRoX3VzZXJfaGFzaCI6ImE5OGU3M2JkNjhjY2FmMTEzZDY0ZWQyZjI4MGIyZjY0MWM2MjhhOWQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJ1c2Vycy52aWV3cy5DdXN0b21CYWNrZW5kIn0=', '2018-07-05 11:16:44.400000');
 INSERT INTO `django_session` VALUES ('u6qb1oe4uza2qqseblmv1ebsad4mdytf', 'MTM4YTU2NzA3ODE5YTY1NTgxZDMxZDMwMzNhNDZlZjE1NzgzNjMyMjp7Il9hdXRoX3VzZXJfaGFzaCI6IjMxY2ZjZTFhOWM1ZDIwOGQ2YWQwYzFiNDg4ZTk0NWY3ZGQyYjliYTMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJ1c2Vycy52aWV3cy5DdXN0b21CYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjExIn0=', '2018-04-26 17:31:43.084000');
 
 -- ----------------------------
@@ -600,11 +600,12 @@ CREATE TABLE `operation_usermessage` (
   `has_read` tinyint(1) NOT NULL,
   `add_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of operation_usermessage
 -- ----------------------------
+INSERT INTO `operation_usermessage` VALUES ('1', '4', 'hello world', '0', '2018-06-21 11:15:00.000000');
 
 -- ----------------------------
 -- Table structure for organization_citydict
@@ -853,7 +854,7 @@ CREATE TABLE `xadmin_log` (
   KEY `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `xadmin_log_content_type_id_2a6cb852_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of xadmin_log
@@ -940,6 +941,7 @@ INSERT INTO `xadmin_log` VALUES ('79', '2018-06-19 15:35:15.687000', '127.0.0.1'
 INSERT INTO `xadmin_log` VALUES ('80', '2018-06-19 15:35:32.811000', '127.0.0.1', '3', 'UserFavorite object', 'create', '已添加', '19', '4');
 INSERT INTO `xadmin_log` VALUES ('81', '2018-06-19 15:35:37.732000', '127.0.0.1', '1', 'UserFavorite object', 'change', '没有字段被修改。', '19', '4');
 INSERT INTO `xadmin_log` VALUES ('82', '2018-06-19 15:35:49.328000', '127.0.0.1', '4', 'UserFavorite object', 'create', '已添加', '19', '4');
+INSERT INTO `xadmin_log` VALUES ('83', '2018-06-21 11:15:10.426000', '127.0.0.1', '1', 'UserMessage object', 'create', '已添加', '20', '4');
 
 -- ----------------------------
 -- Table structure for xadmin_usersettings
