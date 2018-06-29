@@ -97,6 +97,8 @@ class OrgHomeView(View):
     def get(self, request, org_id):
         current_page = 'home'
         course_org = CourseOrg.objects.get(id=int(org_id))
+        course_org.click_num += 1
+        course_org.save()
         has_fav = False
         if request.user.is_authenticated():
              if UserFavorite.objects.filter(user=request.user, fav_id=course_org.id, fav_type=2):
@@ -195,6 +197,21 @@ class AddFavView(View):
         if exist_records:
             #如果记录已经存在，则表示用户取消收藏
             exist_records.delete()  # 删除记录
+            if int(fav_type) == 1:
+                course = Course.objects.get(id=int(fav_id))
+                course.fav_num -= 1
+                if course.fav_num < 0 : course.fav_num = 0
+                course.save()
+            elif int(fav_type) == 2:
+                course_org = CourseOrg.objects.get(id=int(fav_id))
+                course_org.fav_num -= 1
+                if course_org.fav_num < 0 : course_org.fav_num = 0
+                course_org.save()
+            elif int(fav_type) == 3:
+                teacher = Teacher.objects.get(id=int(fav_id))
+                teacher.fav_num -= 1
+                if teacher.fav_num < 0 : teacher.fav_num = 0
+                teacher.save()
             return HttpResponse(json.dumps({'status': 'delete', 'msg': '收藏'}), content_type="application/json")
         else:
             user_fav = UserFavorite()
@@ -203,6 +220,18 @@ class AddFavView(View):
                 user_fav.fav_id = int(fav_id)
                 user_fav.fav_type = int(fav_type)
                 user_fav.save()
+                if int(fav_type) == 1:
+                    course = Course.objects.get(id=int(fav_id))
+                    course.fav_num += 1
+                    course.save()
+                elif int(fav_type) == 2:
+                    course_org = CourseOrg.objects.get(id=int(fav_id))
+                    course_org.fav_num += 1
+                    course_org.save()
+                elif int(fav_type) == 3:
+                    teacher = Teacher.objects.get(id=int(fav_id))
+                    teacher.fav_num += 1
+                    teacher.save()
                 return HttpResponse(json.dumps({'status': 'success', 'msg': '已收藏'}), content_type="application/json")
             else:
                 return HttpResponse(json.dumps({'status': 'fail', 'msg': '收藏失败'}), content_type="application/json")
@@ -252,6 +281,8 @@ class TeacherDetailView(View):
     def get(self, request, teacher_id):
         current_page = 'teacher_list'
         teacher = Teacher.objects.get(id=int(teacher_id))
+        teacher.click_num += 1
+        teacher.save()
         # courses = teacher.course_set.all()
         courses = Course.objects.filter(teacher=teacher)
 

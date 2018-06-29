@@ -32,6 +32,7 @@ class CourseOrg(models.Model):
     address = models.CharField(max_length=150, verbose_name=u'机构地址')
     add_time = models.DateTimeField(verbose_name=u'添加时间',default=datetime.now)
     recommend = models.IntegerField(default=5, verbose_name=u'推荐指数')
+    tag = models.CharField(default=u'全国知名', max_length=10, verbose_name=u'机构标签')
 
     class Meta:
         verbose_name = u'课程机构'

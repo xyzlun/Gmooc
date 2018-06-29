@@ -21,12 +21,14 @@ from django.views.static import serve
 
 from extra_apps import xadmin
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyPwdView
-from Gmooc.settings import MEDIA_ROOT
+from users.views import LogoutView, IndexView
+from Gmooc.settings import MEDIA_ROOT, STATIC_ROOT
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
-    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),  # 对应在html文件中的ur
-    url('^login/$', LoginView.as_view(), name='login'),  # 对应在html文件中的ur
+    url('^$', IndexView.as_view(), name='index'),  # 对应在html文件中的url
+    url('^login/$', LoginView.as_view(), name='login'),  # 对应在html文件中的url
+    url('^logout/$', LogoutView.as_view(), name='logout'),  # 对应在html文件中的url
     url('^register/$', RegisterView.as_view(), name='register'),  # 对应在html文件中的url
     url(r'^captcha/', include('captcha.urls')),
     url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='user_active'),
@@ -40,7 +42,16 @@ urlpatterns = [
     url(r'^course/', include('courses.urls', namespace='course')),
     # 配置上传文件的访问方法函数
     url(r'^media/(?P<path>.*)$',serve, {'document_root': MEDIA_ROOT}),
+    # 配置静态文件的访问方法函数
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
     # 用户中心url配置
     url(r'^users/', include('users.urls', namespace='users')),
 
 ]
+
+# 全局404页面配置
+handler404 = 'users.views.page_not_found'
+# 全局500页面配置
+handler500 = 'users.views.page_error'
+# 全局403页面配置
+handler403 = 'users.views.page_admin_error'
